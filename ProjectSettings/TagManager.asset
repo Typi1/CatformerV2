@@ -8,6 +8,7 @@ TagManager:
   - Sticky
   - Avatar
   - Grapple Point
+  - Harmful
   layers:
   - Default
   - TransparentFX

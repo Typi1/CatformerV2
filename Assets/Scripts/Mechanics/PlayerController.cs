@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 
@@ -10,10 +11,13 @@ public class PlayerController : MonoBehaviour
     private float grapple_speed = 7.0f;
     private float grapple_dist = 2.0f; // set distance after the grapple object to go
 
+    public Vector3 RespawnPoint;
+
     public GameObject grapple_end;
     private SpriteRenderer sr;
     private Rigidbody2D body;
     private BoxCollider2D coll;
+    public Health healthSystem;
 
     private bool isGrounded;
     private bool stuck; // true if currently touching a sticky object (with the "Sticky" tag)
@@ -27,6 +31,15 @@ public class PlayerController : MonoBehaviour
         stuck = false;
         isGrounded = false;
         grapple_time = -1;
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            RespawnPoint = new Vector3(-10.12f, -2.38f, 0);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            RespawnPoint = new Vector3(-7.48f, 3.82f, 0);
+        }
     }
 
     // Update is called once per frame
@@ -78,6 +91,15 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Harmful"))
+        {
+            healthSystem.changeLives(-1);
+            Respawn();
+        }
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Sticky")
@@ -86,6 +108,11 @@ public class PlayerController : MonoBehaviour
             if(body.velocity.x == speed || body.velocity.y > 0) body.velocity = new Vector2(body.velocity.x, 0);
 
         }
+    }
+
+    private void Respawn() // kinda janky right now, need checkpoint stuff
+    {
+        transform.position = RespawnPoint;
     }
 
     IEnumerator AddGrappleForce(Collider2D collision)
