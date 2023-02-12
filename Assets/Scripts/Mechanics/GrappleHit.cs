@@ -18,7 +18,7 @@ public class GrappleHit : MonoBehaviour
     private Rigidbody2D rbParent; // parent's rigidbody2d
     private PlayerController pcParent; // parent's playercontroller function (to be used in doing the grappling through calling coroutines)
 
-    private void Awake()
+    private void Start()
     {
         active = false;
         move_forwards = true;
