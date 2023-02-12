@@ -19,18 +19,20 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D coll;
     public Health healthSystem;
 
-    private bool isGrounded;
+    private float storedJumps; // how many jumps we have left, either 1 or 0
     private bool stuck; // true if currently touching a sticky object (with the "Sticky" tag)
     public float grapple_time; // time that a grapple should last.  if positive or 0, then we are currently in a grappling state
-    
+
+    [SerializeField] private LayerMask jumpableGround;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
         stuck = false;
-        isGrounded = false;
         grapple_time = -1;
+        storedJumps = 0;
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
@@ -64,12 +66,24 @@ public class PlayerController : MonoBehaviour
             body.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Input.GetAxisRaw("Vertical") * speed);
         }
 
-        if ((isGrounded || stuck) && Input.GetButtonDown("Jump"))
+        // stored jump mechanic
+        if (storedJumps == 0 && IsGrounded()) // reset jump when player touches ground (TO-DO: sticky wall?)
         {
-            body.velocity = new Vector2(body.velocity.x, jumpHeight);
-            isGrounded = false;
+            storedJumps = 1;
+            sr.color = Color.yellow;
         }
 
+        if (storedJumps == 1 && Input.GetButtonDown("Jump"))
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + .1f);
+            body.velocity = new Vector2(body.velocity.x, jumpHeight);
+            storedJumps = 0;
+            sr.color = Color.white;
+        }
+        
+ 
+
+        
         //if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         //{
         //    sr.color = Color.green;
@@ -78,8 +92,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!isGrounded && other.gameObject.CompareTag("Ground")) isGrounded = true;
-
         if(other.gameObject.tag == "Sticky")
         {
             sr.flipX = other.transform.position.x - transform.position.x > 0;
@@ -105,7 +117,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Sticky")
         {
             stuck = false;
-            if(body.velocity.x == speed || body.velocity.y > 0) body.velocity = new Vector2(body.velocity.x, 0);
+            if (body.velocity.x == speed || body.velocity.y > 0) body.velocity = new Vector2(body.velocity.x, 0);
 
         }
     }
@@ -147,6 +159,13 @@ public class PlayerController : MonoBehaviour
             grapple_time = -1;
             body.gravityScale = 1;
         }
+    }
+
+    private bool IsGrounded() 
+    {
+
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+
     }
 
 }
