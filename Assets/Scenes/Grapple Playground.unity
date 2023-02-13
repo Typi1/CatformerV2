@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -507, y: 212}
+  m_AnchoredPosition: {x: -400, y: 212}
   m_SizeDelta: {x: 54.0363, y: 50.467}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3558787
@@ -252,7 +252,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.4931293
+  orthographic size: 5.469011
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -342,6 +342,14 @@ PrefabInstance:
       propertyPath: healthSystem
       value: 
       objectReference: {fileID: 733613491}
+    - target: {fileID: 4608415585474338081, guid: 582c36745f4ae944f9f87c6e2d8f676e, type: 3}
+      propertyPath: RespawnPoint.x
+      value: -7.484927
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608415585474338081, guid: 582c36745f4ae944f9f87c6e2d8f676e, type: 3}
+      propertyPath: RespawnPoint.y
+      value: 3.82
+      objectReference: {fileID: 0}
     - target: {fileID: 4608415585474338081, guid: 582c36745f4ae944f9f87c6e2d8f676e, type: 3}
       propertyPath: jumpableGround.m_Bits
       value: 64
@@ -644,7 +652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -411, y: 210}
+  m_AnchoredPosition: {x: -300, y: 210}
   m_SizeDelta: {x: 124.0526, y: 46.439}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &610297994
