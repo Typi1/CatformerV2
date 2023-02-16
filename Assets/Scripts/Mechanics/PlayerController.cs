@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 
 {
-    private float jumpHeight = 5f;
+    private float jumpHeight = 5.5f;
     private float speed = 3.5f;
+
     public Vector3 RespawnPoint;
 
     public GameObject grapple_end;
+    public GameObject trail;
     private SpriteRenderer sr;
     private Rigidbody2D body;
     private BoxCollider2D coll;
@@ -25,7 +27,6 @@ public class PlayerController : MonoBehaviour
     public bool grappleIsForce = false; // toggle for velocity-based grapple or force-based grapple
     private float grappleForce = 3f;
 
-
     [SerializeField] private LayerMask jumpableGround;
 
     private void Awake()
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
         stuck = false;
         grapple_time = -1;
         storedJumps = 0;
+        trail.SetActive(false);
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
@@ -50,8 +52,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (grapple_time <= 0 && (Mathf.Abs(body.velocity.x) < speed)) trail.SetActive(false);
         float movement_direction = Mathf.Abs(body.velocity.x) / body.velocity.x;
-        if (grapple_time <= 0 && (Mathf.Abs(body.velocity.x) < speed) || movement_direction != Mathf.Abs(Input.GetAxisRaw("Horizontal")) / Input.GetAxisRaw("Horizontal"))
+        if (grapple_time <= 0 && (Mathf.Abs(body.velocity.x) < speed || movement_direction != Mathf.Abs(Input.GetAxisRaw("Horizontal")) / Input.GetAxisRaw("Horizontal")))
         {
             body.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, body.velocity.y);
             body.gravityScale = 1;
@@ -59,12 +62,6 @@ public class PlayerController : MonoBehaviour
         //grapple_end.GetComponent<Transform>().position = transform.position + new Vector3((sr.flipX ? -1 : 1) * Mathf.PingPong(Time.time * 5, 2), 0, 0);
 
 
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            grappleIsForce = !grappleIsForce;
-        }
-
-        
 
         if (body.velocity.x < 0 && !stuck)
         {
@@ -75,9 +72,14 @@ public class PlayerController : MonoBehaviour
             sr.flipX = false;
         }
 
-        if(stuck && grapple_time < 0)
+        if (stuck && grapple_time < 0)
         {
             body.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Input.GetAxisRaw("Vertical") * speed);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            grappleIsForce = !grappleIsForce;
         }
 
         // stored jump mechanic
@@ -89,26 +91,15 @@ public class PlayerController : MonoBehaviour
 
         if (storedJumps == 1 && Input.GetButtonDown("Jump"))
         {
-            if (!stuck)
-            {
-                transform.position = new Vector2(transform.position.x, transform.position.y + .1f);
-                body.velocity = new Vector2(body.velocity.x, jumpHeight);
-                storedJumps = 0;
-                sr.color = Color.white;
-            }
-            else 
-            {
-                transform.position = new Vector2(transform.position.x + .1f * (sr.flipX ? -1 : 1), transform.position.y + .1f);
-                body.velocity = new Vector2(body.velocity.x + speed * (sr.flipX ? -1 : 1), jumpHeight * 2);
-                storedJumps = 0;
-                sr.color = Color.white;
-                stuck = !stuck;
-            }
+            transform.position = new Vector2(transform.position.x, transform.position.y + .1f);
+            body.velocity = new Vector2(body.velocity.x, jumpHeight);
+            storedJumps = 0;
+            sr.color = Color.white;
         }
-        
- 
 
-        
+
+
+
         //if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         //{
         //    sr.color = Color.green;
@@ -117,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Sticky")
+        if (other.gameObject.tag == "Sticky")
         {
             sr.flipX = other.transform.position.x - transform.position.x > 0;
             //if (other.transform.position.x - transform.position.x > 0) sr.color = Color.blue;
@@ -135,7 +126,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -155,6 +145,9 @@ public class PlayerController : MonoBehaviour
     IEnumerator AddGrappleForce(Collider2D collision)
     {
         float grapple_direction = 0;
+
+
+
         // negative grapple_time indicates we are not grappling atm. Change that
         if (!grappleIsForce)
         {
@@ -166,8 +159,10 @@ public class PlayerController : MonoBehaviour
                 float grapple_pt_distance = (collision.transform.position.x - transform.position.x); // distance btwn player and object (signed)
                                                                                                      //print(grapple_dist / 2);
                 grapple_direction = grapple_pt_distance > 0 ? 1 : -1;
+                trail.transform.localScale = new Vector3(Mathf.Abs(trail.transform.localScale.x) * grapple_direction, trail.transform.localScale.y, trail.transform.localScale.z);
+                trail.transform.localPosition = new Vector3(Mathf.Abs(trail.transform.localPosition.x) * grapple_direction * -1, trail.transform.localPosition.y, trail.transform.localPosition.z);
                 grapple_time = (Mathf.Abs(grapple_pt_distance) + grapple_dist) / grapple_speed; // add the distance past the grapple point desired, then divide by speed
-
+                trail.SetActive(true);
 
             }
             // perform grappling maneuvering
@@ -190,8 +185,10 @@ public class PlayerController : MonoBehaviour
                 float grapple_pt_distance = (collision.transform.position.x - transform.position.x); // distance btwn player and object (signed)
                                                                                                      //print(grapple_dist / 2);
                 grapple_direction = grapple_pt_distance > 0 ? 1 : -1;
+                trail.transform.localScale = new Vector3(Mathf.Abs(trail.transform.localScale.x) * grapple_direction, trail.transform.localScale.y, trail.transform.localScale.z);
+                trail.transform.localPosition = new Vector3(Mathf.Abs(trail.transform.localPosition.x) * grapple_direction * -1, trail.transform.localPosition.y, trail.transform.localPosition.z);
                 grapple_time = (Mathf.Abs(grapple_pt_distance)) / grapple_speed; // get abs of the distance to the grapple point, then divide by speed
-
+                trail.SetActive(true);
 
             }
             // perform grappling maneuvering
@@ -210,8 +207,7 @@ public class PlayerController : MonoBehaviour
                 grapple_time = -1;
                 body.gravityScale = 0.8f;
                 body.AddForce(new Vector2(grappleForce * grapple_direction, 0), ForceMode2D.Impulse);
-                print(grappleForce * grapple_direction);
-
+                //print(grappleForce * grapple_direction);
             }
             //while (grapple_time >= 0)
             //{
@@ -229,10 +225,12 @@ public class PlayerController : MonoBehaviour
         {
             grapple_time = -1;
             body.gravityScale = 1;
+            trail.SetActive(false);
         }
     }
 
-    private bool IsGrounded() 
+
+    private bool IsGrounded()
     {
 
         return (Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround) || stuck);

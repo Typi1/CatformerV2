@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -328444361
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 510394d484fff5e4ab5c91f2d046a3de, type: 3}
   m_Color: {r: 0, g: 1, b: 0.7017641, a: 1}
@@ -154,7 +154,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -328444361
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -270,7 +270,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -314,8 +314,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429865cb29736aa4c8c1a1ceffd42a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RespawnPoint: {x: 0, y: 0, z: 0}
   grapple_end: {fileID: 4608415584314827201}
+  trail: {fileID: 0}
+  healthSystem: {fileID: 0}
   grapple_time: 0
+  grappleIsForce: 0
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &4608415585474338080
 Rigidbody2D:
   serializedVersion: 4
