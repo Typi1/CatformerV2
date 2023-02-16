@@ -110,7 +110,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Sticky")
         {
-            sr.flipX = other.transform.position.x - transform.position.x > 0;
+
+            sr.flipX = other.GetContact(0).point.x - transform.position.x > 0;
             //if (other.transform.position.x - transform.position.x > 0) sr.color = Color.blue;
             stuck = true;
 
@@ -132,7 +133,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Sticky")
         {
             stuck = false;
-            if (body.velocity.x == speed || body.velocity.y > 0) body.velocity = new Vector2(body.velocity.x, 0);
+            //if ((body.velocity.x == speed || body.velocity.y > 0) && storedJumps > 0) body.velocity = new Vector2(body.velocity.x, 0);
 
         }
     }

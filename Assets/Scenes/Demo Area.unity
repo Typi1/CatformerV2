@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: RespawnPoint.y
       value: -2.38
       objectReference: {fileID: 0}
+    - target: {fileID: 1085747731904641084, guid: 409d755fc3ca017478ec3fcaac00bc27, type: 3}
+      propertyPath: grappleIsForce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3523284138504152350, guid: 409d755fc3ca017478ec3fcaac00bc27, type: 3}
       propertyPath: lifeText
       value: 
