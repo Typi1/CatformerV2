@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 
 {
-    private float jumpHeight = 5.5f;
+    private float jumpHeight = 5.25f;
     private float speed = 3.5f;
 
     public Vector3 RespawnPoint;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public float grapple_time; // time that a grapple should last.  if positive or 0, then we are currently in a grappling state
     private float grapple_speed = 7.0f; // speed of dash (for velocity based dash)
     private float grapple_dist = 2.0f; // set distance after the grapple object to go (for velocity-based dash)
-    public bool grappleIsForce = false; // toggle for velocity-based grapple or force-based grapple
+    public bool grappleIsForce = true; // toggle for velocity-based grapple or force-based grapple
     private float grappleForce = 3f;
 
     [SerializeField] private LayerMask jumpableGround;
