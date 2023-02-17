@@ -14,6 +14,7 @@ public class GrappleHit : MonoBehaviour
 
     private CircleCollider2D coll;
     private LineRenderer line;
+    public Material lineMat;
 
     private SpriteRenderer srParent; // parent's sprite renderer
     private Rigidbody2D rbParent; // parent's rigidbody2d
@@ -32,15 +33,14 @@ public class GrappleHit : MonoBehaviour
         posFace = true;
 
         line = this.GetComponent<LineRenderer>();
-        line.startColor = Color.yellow;
-        line.endColor = Color.yellow;
         line.startWidth = 0.1f;
         line.endWidth = 0.1f;
         line.positionCount = 2;
         line.useWorldSpace = true;
         line.enabled = false;
         line.sortingLayerName = "Default";
-        line.sortingOrder = 2;
+        line.sortingOrder = -2;
+        line.material = lineMat;
     }
 
     // Update is called once per frame

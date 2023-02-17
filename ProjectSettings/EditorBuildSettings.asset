@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game Over.unity
     guid: 25ce2dad9865d47249e660278763d483
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Screens/Jump Tutorial Screen.unity
+    guid: bc64a22c05ebe6448bb4b0ab8bffcfe9
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Screens/Stored Jump Tutorial Screen.unity
+    guid: 3c5dfa7dc0f42044a96a23453e98f5a2
   m_configObjects: {}

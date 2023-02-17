@@ -49,6 +49,9 @@ TagManager:
   - name: BG 1
     uniqueID: 2649516219
     locked: 0
+  - name: Decorative BG
+    uniqueID: 245306101
+    locked: 0
   - name: Grappleable
     uniqueID: 2295892985
     locked: 0

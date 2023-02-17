@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 510394d484fff5e4ab5c91f2d046a3de, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.7017641, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.7017641, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42cadce9042876f408d71b2d117cf196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
 --- !u!120 &1085747730870650075
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -322,7 +323,7 @@ MonoBehaviour:
   trail: {fileID: 3650433835078335097}
   healthSystem: {fileID: 3523284138504152350}
   grapple_time: 0
-  grappleIsForce: 0
+  grappleIsForce: 1
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
