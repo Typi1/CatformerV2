@@ -11,6 +11,7 @@ public class GrappleHit : MonoBehaviour
     private float prop_to_end; // a value from 0 to 1 that is how close the grapple is to the max entension point
     private bool grappling;  // whether grappling is currently happening
     private bool posFace; // true if the grapple is to a positive x direction, negative if not
+    private float grapple_dist = 2f; // distance the grapple travels
 
     private CircleCollider2D coll;
     private LineRenderer line;
@@ -69,12 +70,12 @@ public class GrappleHit : MonoBehaviour
                 {
                     prop_to_end = 1;
                     move_forwards = false;
-                    transform.position = new Vector3((srParent.flipX ? -1 : 1) * 2 + transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
+                    transform.position = new Vector3((srParent.flipX ? -1 : 1) * grapple_dist + transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z);
 
                 }
                 //print(srParent.flipX == true);
                 //srParent.color = Color.red;
-                transform.position = Vector3.Lerp(transform.position, new Vector3((srParent.flipX ? -1 : 1) * 2 + transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z), prop_to_end);
+                transform.position = Vector3.Lerp(transform.position, new Vector3((srParent.flipX ? -1 : 1) * grapple_dist + transform.parent.transform.position.x, transform.parent.transform.position.y, transform.parent.transform.position.z), prop_to_end);
 
                 
             }

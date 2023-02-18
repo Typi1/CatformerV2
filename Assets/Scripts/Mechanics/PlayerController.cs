@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 
 {
-    private float jumpHeight = 5.25f;
+    private float jumpHeight = 5.5f;
     private float speed = 3.5f;
 
     public Vector3 RespawnPoint;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public float grapple_time; // time that a grapple should last.  if positive or 0, then we are currently in a grappling state
     private float grapple_speed = 7.0f; // speed of dash (for velocity based dash)
     private float grapple_dist = 2.0f; // set distance after the grapple object to go (for velocity-based dash)
-    public bool grappleIsForce = true; // toggle for velocity-based grapple or force-based grapple
+    public bool grappleIsForce = false; // toggle for velocity-based grapple or force-based grapple
     private float grappleForce = 3f;
 
     [SerializeField] private LayerMask jumpableGround;
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         if (stuck && grapple_time < 0)
         {
-            body.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Input.GetAxisRaw("Vertical") * speed);
+            body.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Mathf.Max(Input.GetAxisRaw("Vertical") * speed, body.velocity.y));
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -92,6 +92,10 @@ public class PlayerController : MonoBehaviour
         if (storedJumps == 1 && Input.GetButtonDown("Jump"))
         {
             transform.position = new Vector2(transform.position.x, transform.position.y + .1f);
+            if(stuck)
+            {
+                transform.position = new Vector2(transform.position.x + (sr.flipX ? -1 : 1) * 0f, transform.position.y);
+            }
             body.velocity = new Vector2(body.velocity.x, jumpHeight);
             storedJumps = 0;
             sr.color = Color.white;
@@ -110,8 +114,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Sticky")
         {
-
-            sr.flipX = other.GetContact(0).point.x - transform.position.x > 0;
+            sr.flipX = other.transform.position.x - transform.position.x > 0;
             //if (other.transform.position.x - transform.position.x > 0) sr.color = Color.blue;
             stuck = true;
 
@@ -133,7 +136,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Sticky")
         {
             stuck = false;
-            //if ((body.velocity.x == speed || body.velocity.y > 0) && storedJumps > 0) body.velocity = new Vector2(body.velocity.x, 0);
+            //if (body.velocity.x == speed || (body.velocity.y > 0 && body.velocity.y < jumpHeight)) body.velocity = new Vector2(body.velocity.x, 0);
 
         }
     }
@@ -156,9 +159,12 @@ public class PlayerController : MonoBehaviour
             {
                 // use distance to the collision object and grapple speed to determine the time needed to be spent in grapple state
                 // then assign this to grapple time
-
-                float grapple_pt_distance = (collision.transform.position.x - transform.position.x); // distance btwn player and object (signed)
-                                                                                                     //print(grapple_dist / 2);
+                float grapple_pt_distance = (collision.transform.position.x - transform.position.x);
+                if (Mathf.Abs(collision.transform.position.x - transform.position.x) > grapple_dist)
+                {
+                    grapple_pt_distance = (collision.ClosestPoint(grapple_end.transform.position).x - transform.position.x); // distance btwn player and object (signed)
+                }     // distance btwn player and object (signed)
+                      //print(grapple_dist / 2);
                 grapple_direction = grapple_pt_distance > 0 ? 1 : -1;
                 trail.transform.localScale = new Vector3(Mathf.Abs(trail.transform.localScale.x) * grapple_direction, trail.transform.localScale.y, trail.transform.localScale.z);
                 trail.transform.localPosition = new Vector3(Mathf.Abs(trail.transform.localPosition.x) * grapple_direction * -1, trail.transform.localPosition.y, trail.transform.localPosition.z);
@@ -182,13 +188,16 @@ public class PlayerController : MonoBehaviour
             {
                 // use distance to the collision object and grapple speed to determine the time needed to be spent in grapple state
                 // then assign this to grapple time
+                float grapple_pt_distance = (collision.transform.position.x - transform.position.x);
+                if (Mathf.Abs(collision.transform.position.x - transform.position.x) > grapple_dist)
+                {
+                    grapple_pt_distance = (collision.ClosestPoint(grapple_end.transform.position).x - transform.position.x); // distance btwn player and object (signed)
+                }                                                                                                              //print(grapple_dist / 2);
 
-                float grapple_pt_distance = (collision.transform.position.x - transform.position.x); // distance btwn player and object (signed)
-                                                                                                     //print(grapple_dist / 2);
                 grapple_direction = grapple_pt_distance > 0 ? 1 : -1;
                 trail.transform.localScale = new Vector3(Mathf.Abs(trail.transform.localScale.x) * grapple_direction, trail.transform.localScale.y, trail.transform.localScale.z);
                 trail.transform.localPosition = new Vector3(Mathf.Abs(trail.transform.localPosition.x) * grapple_direction * -1, trail.transform.localPosition.y, trail.transform.localPosition.z);
-                grapple_time = (Mathf.Abs(grapple_pt_distance)) / grapple_speed; // get abs of the distance to the grapple point, then divide by speed
+                grapple_time = (Mathf.Abs(grapple_pt_distance) + grapple_dist / 4f) / grapple_speed; // get abs of the distance to the grapple point, then divide by speed
                 trail.SetActive(true);
 
             }
@@ -206,7 +215,7 @@ public class PlayerController : MonoBehaviour
                 //grapple_time = 0.5f;
                 //print(grapple_time);
                 grapple_time = -1;
-                body.gravityScale = 0.8f;
+                body.gravityScale = 1f;
                 body.AddForce(new Vector2(grappleForce * grapple_direction, 0), ForceMode2D.Impulse);
                 //print(grappleForce * grapple_direction);
             }
