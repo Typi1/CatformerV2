@@ -46,8 +46,14 @@ TagManager:
   - name: BG
     uniqueID: 1655737369
     locked: 0
-  - name: Behind
+  - name: BG 1
+    uniqueID: 2649516219
+    locked: 0
+  - name: Terrain
     uniqueID: 3966522935
+    locked: 0
+  - name: Decorative
+    uniqueID: 770730525
     locked: 0
   - name: Default
     uniqueID: 0
