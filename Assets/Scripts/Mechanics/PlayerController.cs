@@ -159,12 +159,8 @@ public class PlayerController : MonoBehaviour
             {
                 // use distance to the collision object and grapple speed to determine the time needed to be spent in grapple state
                 // then assign this to grapple time
-                float grapple_pt_distance = (collision.transform.position.x - transform.position.x);
-                if (Mathf.Abs(collision.transform.position.x - transform.position.x) > grapple_dist)
-                {
-                    grapple_pt_distance = (collision.ClosestPoint(grapple_end.transform.position).x - transform.position.x); // distance btwn player and object (signed)
-                }     // distance btwn player and object (signed)
-                      //print(grapple_dist / 2);
+                float grapple_pt_distance = (collision.ClosestPoint(grapple_end.transform.position).x - transform.position.x); // distance btwn player and object (signed)
+
                 grapple_direction = grapple_pt_distance > 0 ? 1 : -1;
                 trail.transform.localScale = new Vector3(Mathf.Abs(trail.transform.localScale.x) * grapple_direction, trail.transform.localScale.y, trail.transform.localScale.z);
                 trail.transform.localPosition = new Vector3(Mathf.Abs(trail.transform.localPosition.x) * grapple_direction * -1, trail.transform.localPosition.y, trail.transform.localPosition.z);
@@ -193,10 +189,6 @@ public class PlayerController : MonoBehaviour
 
                 grapple_direction = grapple_pt_distance > 0 ? 1 : -1;
 
-                print(collision.ClosestPoint(grapple_end.transform.position).x);
-                print(transform.position.x);
-                print(grapple_pt_distance);
-                print(grapple_direction);
 
                 trail.transform.localScale = new Vector3(Mathf.Abs(trail.transform.localScale.x) * grapple_direction, trail.transform.localScale.y, trail.transform.localScale.z);
                 trail.transform.localPosition = new Vector3(Mathf.Abs(trail.transform.localPosition.x) * grapple_direction * -1, trail.transform.localPosition.y, trail.transform.localPosition.z);
