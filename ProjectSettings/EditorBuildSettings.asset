@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial Screens/Stored Jump Tutorial Screen.unity
     guid: 3c5dfa7dc0f42044a96a23453e98f5a2
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Screens/Grapple Tutorial Screen.unity
+    guid: 3eedc32a2f2dc934ebf6ee710dec73a2
   m_configObjects: {}

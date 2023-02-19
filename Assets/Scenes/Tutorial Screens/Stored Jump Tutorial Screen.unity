@@ -16550,7 +16550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa1cff9550a4bfc8fc9e41c5e653a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Stored Jump Tutorial Screen
+  nextScene: Grapple Tutorial Screen
 --- !u!61 &474386815
 BoxCollider2D:
   m_ObjectHideFlags: 0

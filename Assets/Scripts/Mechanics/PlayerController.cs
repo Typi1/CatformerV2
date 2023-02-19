@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        // negative grapple_time indicates we are not grappling atm. Change that
+        
         if (!grappleIsForce)
         {
             if (grapple_time < 0)
@@ -188,13 +188,16 @@ public class PlayerController : MonoBehaviour
             {
                 // use distance to the collision object and grapple speed to determine the time needed to be spent in grapple state
                 // then assign this to grapple time
-                float grapple_pt_distance = (collision.transform.position.x - transform.position.x);
-                if (Mathf.Abs(collision.transform.position.x - transform.position.x) > grapple_dist)
-                {
-                    grapple_pt_distance = (collision.ClosestPoint(grapple_end.transform.position).x - transform.position.x); // distance btwn player and object (signed)
-                }                                                                                                              //print(grapple_dist / 2);
+                float grapple_pt_distance = collision.ClosestPoint(grapple_end.transform.position).x - transform.position.x; // distance btwn player and object (signed)
+                                                                                                                            //print(grapple_dist / 2);
 
                 grapple_direction = grapple_pt_distance > 0 ? 1 : -1;
+
+                print(collision.ClosestPoint(grapple_end.transform.position).x);
+                print(transform.position.x);
+                print(grapple_pt_distance);
+                print(grapple_direction);
+
                 trail.transform.localScale = new Vector3(Mathf.Abs(trail.transform.localScale.x) * grapple_direction, trail.transform.localScale.y, trail.transform.localScale.z);
                 trail.transform.localPosition = new Vector3(Mathf.Abs(trail.transform.localPosition.x) * grapple_direction * -1, trail.transform.localPosition.y, trail.transform.localPosition.z);
                 grapple_time = (Mathf.Abs(grapple_pt_distance) + grapple_dist / 4f) / grapple_speed; // get abs of the distance to the grapple point, then divide by speed
