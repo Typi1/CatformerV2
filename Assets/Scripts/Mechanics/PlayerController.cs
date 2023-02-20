@@ -39,13 +39,17 @@ public class PlayerController : MonoBehaviour
         storedJumps = 0;
         trail.SetActive(false);
 
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 7)
         {
             RespawnPoint = new Vector3(-10.12f, -2.38f, 0);
         }
         else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             RespawnPoint = new Vector3(-7.48f, 3.82f, 0);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 8)
+        {
+            RespawnPoint = new Vector3(-10.75f, 3.56f, 0);
         }
     }
 

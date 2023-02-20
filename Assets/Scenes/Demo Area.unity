@@ -703,7 +703,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1655737369
-  m_SortingLayer: -6
+  m_SortingLayer: -7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0092aab4cb2f9544db3ada05531122d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa1cff9550a4bfc8fc9e41c5e653a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Grapple Playground
+  nextScene: Early Level 1
 --- !u!1 &994653077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1054,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1645451077
-  m_SortingLayer: -5
+  m_SortingLayer: -6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bbac4ee01cdf0544b85a3079ee32ed21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5469,6 +5469,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1360467151}
+    - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5097241
+      objectReference: {fileID: 0}
     - target: {fileID: 8191716833151255849, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_RootOrder
       value: 9
