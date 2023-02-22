@@ -28,11 +28,11 @@ public class CycleOpacity : MonoBehaviour
 
         if (incr)
         {
-            tm.color = new Color(255/255f, 130/255f, 0/255f, tm.color.a + 1.5f/255f);
+            tm.color = new Color(tm.color.r, tm.color.g, tm.color.b, tm.color.a + 1.5f/255f);
         }
         else
         {
-            tm.color = new Color(255 / 255f, 130 / 255f, 0 / 255f, tm.color.a - 1.5f / 255f);
+            tm.color = new Color(tm.color.r, tm.color.g, tm.color.b, tm.color.a - 1.5f / 255f);
         }
         //print(tm.color.a);
     }

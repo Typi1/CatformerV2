@@ -118,7 +118,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Sticky")
         {
-            sr.flipX = other.transform.position.x - transform.position.x > 0;
+            sr.flipX = other.GetContact(0).point.x - transform.position.x > 0;
+            //sr.flipX = other.transform.position.x - transform.position.x > 0;
             //if (other.transform.position.x - transform.position.x > 0) sr.color = Color.blue;
             stuck = true;
 
