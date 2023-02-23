@@ -730,7 +730,7 @@ PrefabInstance:
       objectReference: {fileID: 441379149}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.966515
+      value: -11.974124
       objectReference: {fileID: 0}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24393,7 +24393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa1cff9550a4bfc8fc9e41c5e653a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Grapple Tutorial Screen
+  nextScene: Clingable Tutorial Screen
 --- !u!61 &474386815
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24428,7 +24428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474386813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.29, y: -1.35, z: -0.17458633}
+  m_LocalPosition: {x: 9.16, y: -5.4, z: -0.17458633}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

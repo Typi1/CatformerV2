@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector2(transform.position.x, transform.position.y + .1f);
             if(stuck)
             {
-                transform.position = new Vector2(transform.position.x + (sr.flipX ? -1 : 1) * 0f, transform.position.y);
+                transform.position = new Vector2(transform.position.x + (sr.flipX ? -1 : 1) * 0f, transform.position.y + .1f);
             }
             body.velocity = new Vector2(body.velocity.x, jumpHeight);
             storedJumps = 0;
