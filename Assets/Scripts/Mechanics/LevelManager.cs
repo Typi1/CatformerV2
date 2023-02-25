@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+
+    public string nextScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,9 @@ public class LevelManager : MonoBehaviour
     {
         if (floor.CompareTag("Avatar"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(nextScene);
+            print(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -49,12 +49,24 @@ TagManager:
   - name: BG 1
     uniqueID: 2649516219
     locked: 0
+  - name: Decorative BG
+    uniqueID: 245306101
+    locked: 0
+  - name: Grappleable
+    uniqueID: 2295892985
+    locked: 0
   - name: Terrain
     uniqueID: 3966522935
+    locked: 0
+  - name: Harmful
+    uniqueID: 461762909
     locked: 0
   - name: Decorative
     uniqueID: 770730525
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Water
+    uniqueID: 803236629
     locked: 0
