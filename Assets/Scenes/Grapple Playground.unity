@@ -6744,6 +6744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftSide
       objectReference: {fileID: 0}
+    - target: {fileID: 2734610315037881874, guid: 0f3d2280ccba2be47a29633a4d2e1b5e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2734610315037881887, guid: 0f3d2280ccba2be47a29633a4d2e1b5e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6758,7 +6762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2734610315037881887, guid: 0f3d2280ccba2be47a29633a4d2e1b5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.21
+      value: -12.94
       objectReference: {fileID: 0}
     - target: {fileID: 2734610315037881887, guid: 0f3d2280ccba2be47a29633a4d2e1b5e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8617,7 +8621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa1cff9550a4bfc8fc9e41c5e653a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Vertical Scene
+  nextScene: U Turn Level
 --- !u!61 &1896489810
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8680,7 +8684,7 @@ PrefabInstance:
       objectReference: {fileID: 463848746}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.519136
+      value: -1.5110197
       objectReference: {fileID: 0}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.y

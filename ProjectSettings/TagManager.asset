@@ -9,6 +9,7 @@ TagManager:
   - Avatar
   - Grapple Point
   - Harmful
+  - Bouncy
   layers:
   - Default
   - TransparentFX
