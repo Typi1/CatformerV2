@@ -214,10 +214,19 @@ public class PlayerController : MonoBehaviour
             {
                 //grapple_time = 0.5f;
                 //print(grapple_time);
-                grapple_time = -1;
+                grapple_time = 0.2f;
                 body.gravityScale = 1f;
+                if (body.velocity.x == 0)
+                {
+                    body.velocity = new Vector2(speed * grapple_direction, body.velocity.y);
+                }
                 body.AddForce(new Vector2(grappleForce * grapple_direction, 0), ForceMode2D.Impulse);
                 //print(grappleForce * grapple_direction);
+            }
+            while (grapple_time >= 0)
+            {
+                grapple_time -= Time.deltaTime;
+                yield return null;
             }
             //while (grapple_time >= 0)
             //{
