@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
             sr.color = Color.yellow;
         }
 
-        if (storedJumps == 1 && Input.GetButtonDown("Jump"))
+        if (storedJumps == 1 && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Z)))
         {
             transform.position = new Vector2(transform.position.x, transform.position.y + .1f);
             if(stuck)

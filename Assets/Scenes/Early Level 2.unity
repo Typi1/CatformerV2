@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 1616960821}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5115423
+      value: -1.5153112
       objectReference: {fileID: 0}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4251,7 +4251,7 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.792
+  m_FalloffIntensity: 0.631
   m_Color: {r: 1, g: 0.7557792, b: 0.32704395, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
@@ -5829,7 +5829,7 @@ PrefabInstance:
     - target: {fileID: 3523284138504152350, guid: 409d755fc3ca017478ec3fcaac00bc27, type: 3}
       propertyPath: lifeText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 511151068}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 409d755fc3ca017478ec3fcaac00bc27, type: 3}
 --- !u!4 &1616960821 stripped

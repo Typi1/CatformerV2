@@ -51,7 +51,7 @@ public class GrappleHit : MonoBehaviour
         if (pcParent.grapple_time >= 0) grappling = true;
         else grappling = false;
 
-        if(!active && grappling == false && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.J)))
+        if(!active && grappling == false && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.X)))
         {
             active = true;
             move_forwards = true;

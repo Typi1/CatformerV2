@@ -16,7 +16,7 @@ public class StartEndScreen : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(4);
         }
     }
 }
