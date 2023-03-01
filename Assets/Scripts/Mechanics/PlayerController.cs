@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject grapple_end;
     public GameObject trail;
+    public GameObject jumpIndicator;
     private SpriteRenderer sr;
     private Rigidbody2D body;
     private BoxCollider2D coll;
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour
         grapple_time = -1;
         storedJumps = 0;
         trail.SetActive(false);
+
+        jumpIndicator.SetActive(true);
 
         if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 7)
         {
@@ -90,7 +93,8 @@ public class PlayerController : MonoBehaviour
         if (storedJumps == 0 && IsGrounded()) // reset jump when player touches ground (TO-DO: sticky wall?)
         {
             storedJumps = 1;
-            sr.color = Color.yellow;
+            //sr.color = Color.yellow;
+            jumpIndicator.SetActive(true);
         }
 
         if (storedJumps == 1 && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Z)))
@@ -99,10 +103,12 @@ public class PlayerController : MonoBehaviour
             if(stuck)
             {
                 transform.position = new Vector2(transform.position.x + (sr.flipX ? -1 : 1) * 0f, transform.position.y + .1f);
+                StartCoroutine("RemoveStoredJump");
             }
             body.velocity = new Vector2(body.velocity.x, jumpHeight);
             storedJumps = 0;
-            sr.color = Color.white;
+            //sr.color = Color.white;
+            jumpIndicator.SetActive(false);
         }
 
 
@@ -149,6 +155,18 @@ public class PlayerController : MonoBehaviour
     private void Respawn() // kinda janky right now, need checkpoint stuff
     {
         transform.position = RespawnPoint;
+    }
+
+    IEnumerator RemoveStoredJump()
+    {
+        int i = 2;
+        while (i > 0)
+        {
+            i -= 1;
+            yield return null;
+        }
+        storedJumps = 0;
+        jumpIndicator.SetActive(false);
     }
 
     IEnumerator AddGrappleForce(Collider2D collision)
