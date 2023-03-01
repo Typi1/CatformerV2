@@ -51,6 +51,10 @@ public class TextTrigger : MonoBehaviour
                 {
                     txtObj.text = "If  you  walk  off  a  ledge  without  jumping,  you  can  save  your  jump  to  use  midair.";
                 }
+                if (txtNum == 1)
+                {
+                    txtObj.text = "The arrow  icon above  you indicates  if  you  can jump.";
+                }
                 break;
             case 6: // third screen (grapple tutorial)
                 if (txtNum == 0)
@@ -74,6 +78,10 @@ public class TextTrigger : MonoBehaviour
                 break;
             default:
                 break;
+        }
+        if (txtNum == -1)
+        {
+            txtObj.text = "";
         }
     }
 
