@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D coll;
     public Health healthSystem;
 
+    public bool showJumpIndicator;
     private float storedJumps; // how many jumps we have left, either 1 or 0
     private bool stuck; // true if currently touching a sticky object (with the "Sticky" tag)
 
@@ -39,8 +40,8 @@ public class PlayerController : MonoBehaviour
         grapple_time = -1;
         storedJumps = 0;
         trail.SetActive(false);
-
-        jumpIndicator.SetActive(true);
+        
+        jumpIndicator.SetActive(showJumpIndicator);
 
         if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 7)
         {
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             storedJumps = 1;
             //sr.color = Color.yellow;
-            jumpIndicator.SetActive(true);
+            jumpIndicator.SetActive(showJumpIndicator);
         }
 
         if (storedJumps == 1 && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Z)))

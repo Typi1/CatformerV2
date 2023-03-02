@@ -324,6 +324,7 @@ MonoBehaviour:
   trail: {fileID: 3650433835078335097}
   jumpIndicator: {fileID: 1525647498351689415}
   healthSystem: {fileID: 3523284138504152350}
+  showJumpIndicator: 1
   grapple_time: 0
   grappleIsForce: 1
   jumpableGround:

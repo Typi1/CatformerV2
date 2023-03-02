@@ -10,6 +10,7 @@ public class TextTrigger : MonoBehaviour
     public Text txtObj; 
     public int txtNum; // which text the object will switch the current displayed text to
     private int screenID;
+    public GameObject avatar;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,7 @@ public class TextTrigger : MonoBehaviour
                 if (txtNum == 1)
                 {
                     txtObj.text = "The arrow  icon above  you indicates  if  you  can jump.";
+                    avatar.GetComponent<PlayerController>().showJumpIndicator = true;
                 }
                 break;
             case 6: // third screen (grapple tutorial)
