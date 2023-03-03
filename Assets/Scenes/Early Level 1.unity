@@ -6567,7 +6567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa1cff9550a4bfc8fc9e41c5e653a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Early Level 2
+  nextScene: Grapple Playground
 --- !u!61 &974851104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6698,7 +6698,7 @@ PrefabInstance:
       objectReference: {fileID: 462599661}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5153112
+      value: -1.5097241
       objectReference: {fileID: 0}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.y
