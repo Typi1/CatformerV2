@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D coll;
     public Health healthSystem;
 
+    public bool canMove;
     public bool showJumpIndicator;
     private float storedJumps; // how many jumps we have left, either 1 or 0
     private bool stuck; // true if currently touching a sticky object (with the "Sticky" tag)
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
+        canMove = true;
         stuck = false;
         grapple_time = -1;
         storedJumps = 0;
@@ -60,6 +62,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!canMove) return;
+
         if (grapple_time <= 0 && (Mathf.Abs(body.velocity.x) < speed)) trail.SetActive(false);
         float movement_direction = Mathf.Abs(body.velocity.x) / body.velocity.x;
         if (grapple_time <= 0 && (Mathf.Abs(body.velocity.x) < speed || movement_direction != Mathf.Abs(Input.GetAxisRaw("Horizontal")) / Input.GetAxisRaw("Horizontal")))
