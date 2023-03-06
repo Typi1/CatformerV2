@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/U Turn Level.unity
     guid: 669812c99468f07408a393f20f3be7d7
+  - enabled: 1
+    path: Assets/Scenes/End Scene.unity
+    guid: fc8404f8f7e6dae4e932bc2ebd6a50f3
   m_configObjects: {}

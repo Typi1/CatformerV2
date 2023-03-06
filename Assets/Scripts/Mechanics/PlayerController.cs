@@ -89,10 +89,10 @@ public class PlayerController : MonoBehaviour
             body.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, Mathf.Max(Input.GetAxisRaw("Vertical") * speed, body.velocity.y));
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            grappleIsForce = !grappleIsForce;
-        }
+        //if (Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    grappleIsForce = !grappleIsForce;
+        //}
 
         // stored jump mechanic
         if (storedJumps == 0 && IsGrounded()) // reset jump when player touches ground (TO-DO: sticky wall?)

@@ -1459,6 +1459,11 @@ PrefabInstance:
       objectReference: {fileID: 244176066}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 409d755fc3ca017478ec3fcaac00bc27, type: 3}
+--- !u!1 &195917555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1085747731904641025, guid: 409d755fc3ca017478ec3fcaac00bc27, type: 3}
+  m_PrefabInstance: {fileID: 195917554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &244176064
 GameObject:
   m_ObjectHideFlags: 0
@@ -5709,10 +5714,22 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1085747731904641084, guid: 409d755fc3ca017478ec3fcaac00bc27, type: 3}
   m_PrefabInstance: {fileID: 195917554}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 195917555}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 429865cb29736aa4c8c1a1ceffd42a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1758169104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195917555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dde676d092d4d86aaaeb9c3d381562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1883565994
@@ -9668,7 +9685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2734610315037881887, guid: 0f3d2280ccba2be47a29633a4d2e1b5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.47
+      value: -14.95
       objectReference: {fileID: 0}
     - target: {fileID: 2734610315037881887, guid: 0f3d2280ccba2be47a29633a4d2e1b5e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9722,11 +9739,11 @@ PrefabInstance:
       objectReference: {fileID: 1360467151}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5196614
+      value: -1.5153112
       objectReference: {fileID: 0}
     - target: {fileID: 8191716831915818793, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6514385
+      value: -0.6514387
       objectReference: {fileID: 0}
     - target: {fileID: 8191716833151255849, guid: 12b0964e4a92e914ea6fd842aa5a0503, type: 3}
       propertyPath: m_RootOrder
